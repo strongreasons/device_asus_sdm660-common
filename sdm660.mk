@@ -657,7 +657,8 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     WifiOverlay \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    wpa_cli
 
 PRODUCT_PACKAGES += \
     firmware_WCNSS_qcom_cfg.ini_symlink
