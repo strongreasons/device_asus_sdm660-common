@@ -335,7 +335,11 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Radio (IMS)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    persist.dbg.ims_volte_enable=1
+    persist.dbg.ims_volte_enable=1 \
+    persist.vendor.ims.disableADBLogs=1 \
+    persist.vendor.ims.disableDebugLogs=1 \
+    persist.vendor.ims.disableIMSLogs=1 \
+    persist.vendor.ims.disableQXDMLogs=1
 
 # Recovery
 PRODUCT_PACKAGES += \
