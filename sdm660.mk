@@ -9,6 +9,10 @@ $(call inherit-product, vendor/asus/sdm660-common/sdm660-common-vendor.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 
+# Beneficial for everyone, even on non-Go devices.
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/boot/boot-image-profile.txt
+PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
+
 # UFFD GC
 OVERRIDE_ENABLE_UFFD_GC := false
 
