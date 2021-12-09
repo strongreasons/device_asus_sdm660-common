@@ -122,7 +122,7 @@ TARGET_MOUNT_POINTS_SYMLINKS := true
 BOARD_VNDK_VERSION := current
 
 # Vendor Security patch level
-VENDOR_SECURITY_PATCH := 2022-03-05
+VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 # Verity
 # Only needed for signing
