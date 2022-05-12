@@ -32,6 +32,9 @@ persist.dirac.acs.controller=qem
 persist.dirac.acs.ignore_error=1
 persist.dirac.acs.storeSettings=1
 
+# Disable Skia tracing by default
+debug.hwui.skia_atrace_enabled=false
+
 # Display
 vendor.display.enable_default_color_mode=1
 vendor.gralloc.enable_fb_ubwc=1
