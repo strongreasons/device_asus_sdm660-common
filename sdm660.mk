@@ -438,6 +438,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.usb.config=diag,serial_cdev,rmnet,adb
 
+# Use FUSE passthrough
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.sys.fuse.passthrough.enable=true
+
 # FIXME: master: compat for libprotobuf
 # See https://android-review.googlesource.com/c/platform/prebuilts/vndk/v28/+/1109518
 PRODUCT_PACKAGES += \
