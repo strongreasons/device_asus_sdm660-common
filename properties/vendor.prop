@@ -127,6 +127,9 @@ vendor.fm.a2dp.conc.disabled=false
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
+# Graphics
+vendor.gralloc.disable_ahardware_buffer=1
+
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.vendor.perf.scroll_opt=true
