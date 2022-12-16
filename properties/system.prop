@@ -73,6 +73,9 @@ persist.backup.ntpServer="0.pool.ntp.org"
 # QC framework value-adds
 ro.vendor.qti.va_aosp.support=1
 
+# RCS
+persist.rcs.supported=1
+
 # Recovery
 persist.sys.binary_xml=false
 
