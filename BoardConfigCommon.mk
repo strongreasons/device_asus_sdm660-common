@@ -135,6 +135,9 @@ BOARD_ROOT_EXTRA_SYMLINKS := \
 TARGET_BOARD_PLATFORM := sdm660
 TARGET_USES_UM_4_19 := true
 
+# Power
+TARGET_USES_INTERACTION_BOOST := true
+
 # Properties
 TARGET_ODM_PROP += $(COMMON_PATH)/properties/odm.prop
 TARGET_PRODUCT_PROP += $(COMMON_PATH)/properties/product.prop
