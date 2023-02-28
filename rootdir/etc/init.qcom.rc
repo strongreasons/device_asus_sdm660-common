@@ -38,7 +38,6 @@ on early-init
     chmod 0620 /dev/kmsg
 
 on init
-
     # Create cgroup mount point for memory
     mkdir /sys/fs/cgroup/memory/bg 0750 root system
     write /sys/fs/cgroup/memory/bg/memory.swappiness 140
@@ -54,6 +53,9 @@ on init
     # Enable suspend to RAM
     write /sys/power/mem_sleep "deep"
 
+    # Mount cgroup mount point for cpu accounting
+    mount cgroup none /acct cpuacct
+    
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
 
