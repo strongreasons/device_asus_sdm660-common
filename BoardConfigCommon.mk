@@ -132,7 +132,6 @@ BOARD_AVB_ENABLE := false
 
 # WLAN
 BOARD_HAS_QCOM_WLAN := true
-WIFI_DRIVER_DEFAULT := qca_cld3
 
 # Inherit the proprietary files
 include vendor/asus/sdm660-common/BoardConfigVendor.mk
