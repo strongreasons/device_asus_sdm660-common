@@ -182,6 +182,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.cryptfshw@1.0-service-qti.qsee
 
+# HWUI
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.hwui.render_ahead=20
+
 # Inherit several Android Go Configurations(Beneficial for everyone, even on non-Go devices)
 PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
 PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-image-profile.txt
