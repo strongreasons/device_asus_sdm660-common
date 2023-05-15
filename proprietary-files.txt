@@ -80,6 +80,10 @@ vendor/lib64/libbtnv.so|0c74a43550b939b9496b03b3285fa950cf560c48
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so|23706dcfa35cc6f7dee934e13886c19a56a9aa12
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so|ece3dafc4447e8302109851c3a6b0d3978b3506d
 
+# Camera (GCAM required libs) - from Bonito SP2A.220505.008
+vendor/lib/lib_aion_buffer.so|a49aab8cb80f05b64c0c12a3970dba50d2dc4691
+vendor/lib64/lib_aion_buffer.so|3ab3ff99bff2b6f2884da2fc4b0cfa6d69e8e94b
+
 # Charger
 vendor/bin/hvdcp_opti
 
