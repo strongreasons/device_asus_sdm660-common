@@ -48,8 +48,7 @@ PRODUCT_PACKAGES += \
     libhdmiedid \
     libhfp \
     libsndmonitor \
-    libspkrprot \
-    libssrec
+    libspkrprot
 
 # Audio Configs
 PRODUCT_COPY_FILES += \
