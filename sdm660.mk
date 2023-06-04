@@ -132,7 +132,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_VENDOR_PROPERTIES += \
     debug.sf.disable_backpressure=1 \
-    debug.sf.enable_hwc_vds=1 \
     debug.sf.hw=1 \
     debug.sf.recomputecrop=0 \
     persist.hwc.mdpcomp.enable=true \
@@ -331,6 +330,7 @@ TARGET_COMMON_QTI_COMPONENTS += all
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.6.vendor \
     android.hardware.secure_element@1.1 \
+    android.hardware.secure_element@1.2 \
     android.hardware.radio.config@1.3.vendor \
     android.hardware.secure_element@1.2.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
@@ -382,8 +382,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Service Tracker
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.servicetracker@1.2-impl \
-    vendor.qti.hardware.servicetracker@1.2-service \
-    vendor.qti.hardware.servicetracker@1.2.vendor
+    vendor.qti.hardware.servicetracker@1.2-service
 
 # SoC Information
 PRODUCT_VENDOR_PROPERTIES += \
