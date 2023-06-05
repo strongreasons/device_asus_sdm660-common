@@ -326,6 +326,7 @@ PRODUCT_PACKAGES += \
 # QTI Common Components
 TARGET_COMMON_QTI_COMPONENTS += \
     adreno \
+    alarm \
     audio \
     av \
     bt \
