@@ -156,7 +156,11 @@ PRODUCT_PACKAGES += \
 
 # Doze mode
 PRODUCT_PACKAGES += \
-    Doze
+    ParanoidDoze
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.sensor.proximity=true \
+    ro.sensor.pickup=asus.sensor.pickup
 
 # DRM
 PRODUCT_PACKAGES += \
