@@ -68,10 +68,8 @@ BOARD_KERNEL_CMDLINE += kpti=off
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_IMAGE_NAME  := Image.gz-dtb
-
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_SOURCE := kernel/msm-4.19
-TARGET_KERNEL_VERSION := 4.19
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
     HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 
@@ -94,6 +92,10 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_sdm660
 
 # LMKD
 TARGET_LMKD_STATS_LOG := true
+
+# Override
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
@@ -122,10 +124,6 @@ TARGET_MOUNT_POINTS_SYMLINKS := true
 BOARD_ROOT_EXTRA_SYMLINKS := \
     /mnt/vendor/persist:/persist
 
-# Platform
-TARGET_BOARD_PLATFORM := sdm660
-TARGET_USES_UM_4_19 := true
-
 # Power
 TARGET_USES_INTERACTION_BOOST := true
 
@@ -135,9 +133,6 @@ TARGET_PRODUCT_PROP += $(COMMON_PATH)/properties/product.prop
 TARGET_SYSTEM_PROP += $(COMMON_PATH)/properties/system.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/properties/vendor.prop
 TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/properties/system_ext.prop
-
-# QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
