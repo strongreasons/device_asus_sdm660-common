@@ -313,11 +313,15 @@ PRODUCT_PACKAGES += \
     android.hardware.media.c2@1.0.vendor
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-aosp
-
-PRODUCT_ENFORCE_RRO_TARGETS := *
+PRODUCT_PACKAGES += \
+    CarrierConfigResAsus \
+    CellBroadcastReceiverResAsus \
+    FrameworksResAsus \
+    SettingsResAsus \
+    SystemUIResAsus \
+    TelephonyResAsus \
+    TetheringConfigOverlay \
+    WifiOverlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -500,7 +504,6 @@ PRODUCT_PACKAGES += \
     libwifi-hal-qcom \
     wificond \
     libwpa_client \
-    WifiOverlay \
     wpa_supplicant \
     wpa_supplicant.conf
 
