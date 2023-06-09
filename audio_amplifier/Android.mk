@@ -1,17 +1,7 @@
 #
-# Copyright 2020 The LineageOS Project
+# Copyright (C) 2022 Paranoid Android
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# SPDX-License-Identifier: Apache-2.0
 #
 
 LOCAL_PATH := $(call my-dir)
@@ -26,7 +16,6 @@ LOCAL_SHARED_LIBRARIES := \
     libaudioroute \
     libdl \
     libaudioutils \
-    libhwbinder \
     libhidlbase \
     libprocessgroup \
     libutils \
@@ -39,12 +28,13 @@ LOCAL_C_INCLUDES += \
     system/media/audio_utils/include \
     $(call include-path-for, audio-effects) \
     $(call include-path-for, audio-route) \
-    $(call project-path-for,qcom-audio)/hal \
-    $(call project-path-for,qcom-audio)/hal/msm8974 \
-    $(call project-path-for,qcom-audio)/hal/audio_extn \
-    $(call project-path-for,qcom-audio)/hal/voice_extn
+    vendor/qcom/opensource/audio-hal/primary-hal/hal \
+    vendor/qcom/opensource/audio-hal/primary-hal/hal/msm8974 \
+    vendor/qcom/opensource/audio-hal/primary-hal/hal/audio_extn \
+    vendor/qcom/opensource/audio-hal/primary-hal/hal/voice_extn \
+    $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/techpack/audio/include
 
-LOCAL_HEADER_LIBRARIES := generated_kernel_headers
+LOCAL_HEADER_LIBRARIES := qti_kernel_headers
 LOCAL_SRC_FILES := audio_amplifier.c
 LOCAL_MODULE := audio_amplifier.sdm660
 LOCAL_MODULE_RELATIVE_PATH := hw
