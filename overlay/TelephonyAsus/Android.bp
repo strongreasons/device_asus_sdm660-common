@@ -1,5 +1,0 @@
-runtime_resource_overlay {
-    name: "TelephonyResAsus",
-    product_specific: true,
-    sdk_version: "current",
-}

@@ -1,2 +1,0 @@
-allow fsck fsck:capability kill;
-allow fsck self:capability sys_admin;

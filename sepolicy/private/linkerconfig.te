@@ -1,2 +1,0 @@
-allow odrefresh self:capability sys_admin;
-allow linkerconfig linkerconfig:capability { sys_admin kill };

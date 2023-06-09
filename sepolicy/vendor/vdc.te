@@ -1,2 +1,0 @@
-allow vdc self:capability sys_admin;
-allow vdc self:capability kill;
