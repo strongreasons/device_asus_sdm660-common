@@ -28,6 +28,9 @@ arm64.memtag.process.system_server=off
 # Display
 debug.sf.disable_client_composition_cache=1
 debug.sf.enable_transaction_tracing=false
+debug.sf.predict_hwc_composition_strategy=0
+debug.hwui.use_hint_manager=true
+debug.hwui.target_cpu_time_percent=30
 debug.sdm.support_writeback=0
 
 # DPM
