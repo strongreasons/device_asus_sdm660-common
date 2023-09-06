@@ -27,12 +27,11 @@ arm64.memtag.process.system_server=off
 
 # Display
 debug.sf.disable_client_composition_cache=1
-vendor.display.disable_inline_rotator=1
 debug.sf.enable_transaction_tracing=false
 debug.sf.predict_hwc_composition_strategy=0
-debug.hwui.use_hint_manager=true
-debug.hwui.target_cpu_time_percent=30
 debug.sdm.support_writeback=0
+persist.hwc.mdpcomp.enable=true
+vendor.display.disable_inline_rotator=1
 
 # DPM
 persist.vendor.dpm.feature=1
@@ -41,21 +40,34 @@ persist.vendor.dpm.feature=1
 persist.sys.fingerauto=1
 persist.sys.iscdfinger_998eas=1
 
-# Fling
-ro.min.fling_velocity=160
-ro.max.fling_velocity=20000
-ro.max.fling_velocity=20000
-ro.vendor.qti.cgroup_follow.enable=true
-ro.qcom.adreno.qgl.ShaderStorageImageExtendedFormats=0
-
 # GPS
 persist.vendor.overlay.izat.optin=rro
 
 # Graphics
 debug.sf.latch_unsignaled=0
+dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 persist.hwc.enable_vds=1
 sdm.debug.disable_skip_validate=1
+
+# HWUI
+ro.hwui.texture_cache_size=72
+ro.hwui.layer_cache_size=48
+ro.hwui.r_buffer_cache_size=8
+ro.hwui.path_cache_size=32
+ro.hwui.gradient_cache_size=1
+ro.hwui.drop_shadow_cache_size=6
+ro.hwui.texture_cache_flushrate=0.4
+ro.hwui.text_small_cache_width=1024
+ro.hwui.text_small_cache_height=1024
+ro.hwui.text_large_cache_width=2048
+ro.hwui.text_large_cache_height=1024
+debug.hwui.skia_atrace_enabled=false
+debug.hwui.use_hint_manager=true
+debug.hwui.target_cpu_time_percent=30
+
+# Maintainer
+ro.spark.maintainer=fakedotkit
 
 # Media
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
@@ -80,9 +92,12 @@ ro.vendor.qti.va_aosp.support=1
 # Radio
 DEVICE_PROVISIONED=1
 persist.radio.VT_CAM_INTERFACE=2
-persist.sys.fflag.override.settings_network_and_internet_v2=true
 ril.subscription.types=NV,RUIM
 telephony.lteOnCdmaDevice=1
+persist.vendor.ims.disableADBLogs=1
+persist.vendor.ims.disableDebugLogs=1
+persist.vendor.ims.disableIMSLogs=1
+persist.vendor.ims.disableQXDMLogs=1
 
 # RCS
 persist.rcs.supported=1
