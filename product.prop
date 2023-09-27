@@ -1,5 +1,2 @@
-# Enable EGL image tracking on SF for b/137514000
-debug.sf.enable_egl_image_tracker=1
-
 # Phantom process monitoring
 sys.fflag.override.settings_enable_monitor_phantom_procs=false
