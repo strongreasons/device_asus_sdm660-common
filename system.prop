@@ -30,8 +30,13 @@ arm64.memtag.process.system_server=off
 
 # Display
 vendor.display.enable_default_color_mode=1
-vendor.gralloc.enable_fb_ubwc=1
 vendor.display.disable_skip_validate=1
+debug.sf.disable_client_composition_cache=1
+debug.sf.enable_transaction_tracing=false
+debug.sf.predict_hwc_composition_strategy=0
+
+# Disable Skia tracing by default
+debug.hwui.skia_atrace_enabled=false
 
 # DPM
 persist.vendor.dpm.feature=1
@@ -45,13 +50,12 @@ persist.vendor.overlay.izat.optin=rro
 
 # Graphics
 debug.sf.latch_unsignaled=0
-debug.sf.disable_backpressure=1
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 persist.hwc.enable_vds=1
 sdm.debug.disable_skip_validate=1
 
-#hwui properties
+# HWUI properties
 ro.hwui.texture_cache_size=72
 ro.hwui.layer_cache_size=48
 ro.hwui.r_buffer_cache_size=8

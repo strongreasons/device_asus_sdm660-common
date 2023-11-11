@@ -125,17 +125,9 @@ dalvik.vm.heaptargetutilization=0.70
 dalvik.vm.heapminfree=2m
 dalvik.vm.heapmaxfree=8m
 
-# Disable Skia tracing by default
-debug.hwui.skia_atrace_enabled=false
-
 # Display
 debug.sf.hw=1
 debug.sf.recomputecrop=0
-debug.sf.disable_client_composition_cache=1
-debug.sf.enable_transaction_tracing=false
-debug.sf.predict_hwc_composition_strategy=0
-debug.hwui.use_hint_manager=true
-debug.hwui.target_cpu_time_percent=30
 persist.hwc.mdpcomp.enable=true
 ro.hardware.egl=adreno
 ro.hardware.vulkan=adreno
@@ -143,10 +135,8 @@ ro.opengles.version=196610
 vendor.display.disable_scaler=1
 vendor.display.disable_partial_split=1
 vendor.display.disable_rotator_downscale=1
-vendor.display.disable_metadata_dynamic_fps=1
 vendor.display.perf_hint_window=50
 vendor.gralloc.enable_fb_ubwc=1
-vendor.gralloc.disable_ahardware_buffer=1
 
 # DPM
 persist.vendor.dpm.loglevel=0
@@ -187,16 +177,12 @@ persist.log.tag.IntervalStats=S
 persist.log.tag.CompatibilityChangeReporter=S
 persist.log.tag.SQLiteLog=S
 persist.log.tag.wificond=S
-persist.log.tag.b/223498680=S
 persist.log.tag.TrafficStats=S
 persist.log.tag.ContrastColorUtil=S
 persist.log.tag.OpenGLRenderer=S
 
 # NTP Server
 persist.backup.ntpServer=0.pool.ntp.org
-
-# Perf
-ro.vendor.perf.scroll_opt=true
 
 # Radio
 persist.radio.multisim.config=dsds
@@ -250,6 +236,7 @@ debug.sf.earlyGl.sf.duration=30000000
 debug.sf.earlyGl.app.duration=24000000
 debug.sf.hwc.min.duration=21000000
 ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
+ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 ro.surface_flinger.max_virtual_display_dimension=4096
 ro.surface_flinger.set_display_power_timer_ms=10000
 ro.surface_flinger.set_touch_timer_ms=200
