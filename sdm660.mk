@@ -441,7 +441,6 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/pixel
 
 PRODUCT_DEXPREOPT_SPEED_APPS += \
-    SystemUI \
     SystemUIGoogle
 
 # Sqlite
