@@ -115,6 +115,13 @@ debug.stagefright.omx_default_rank.sw-audio=1
 debug.stagefright.omx_default_rank=0
 
 # Dalvik dex2oat
+pm.dexopt.boot=verify
+pm.dexopt.first-boot=verify
+pm.dexopt.install=speed-profile
+dalvik.vm.image-dex2oat-filter=speed
+dalvik.vm.image-dex2oat-threads=8
+dalvik.vm.dex2oat-filter=speed
+dalvik.vm.dex2oat-threads=8
 dalvik.vm.dex2oat64.enabled=true
 
 # Dalvik overrides
@@ -158,11 +165,15 @@ ro.com.google.rlzbrandcode=ASUP
 ro.com.google.rlz_ap_whitelist=y0,y5,y6,y7,y9
 
 # Graphics
+debug.hwui.renderer=skiagl
 debug.hwui.skia_atrace_enabled=false
 debug.renderengine.backend=skiaglthreaded
+debug.sdm.support_writeback=0
 debug.sf.disable_client_composition_cache=1
 debug.sf.enable_transaction_tracing=false
+debug.sf.latch_unsignaled=0
 debug.sf.predict_hwc_composition_strategy=0
+renderthread.skia.reduceopstasksplitting=true
 ro.hardware.egl=adreno
 ro.hardware.vulkan=adreno
 vendor.gralloc.disable_ahardware_buffer=1
