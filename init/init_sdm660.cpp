@@ -95,6 +95,6 @@ void vendor_load_properties()
     set_avoid_gfxaccel_config();
     NFC_check();
 
-    set_build_fingerprint("google/redfin/redfin:14/UP1A.231105.001/10817346:user/release-keys");
-    set_build_description("redfin-user 13 UP1A.231105.001 10817346 release-keys");
+    set_build_fingerprint("google/coral/coral:10/QQ3A.200705.002/6506677:user/release-keys");
+    set_build_description("coral-user 10 QQ3A.200705.002 6506677 release-keys");
 }
