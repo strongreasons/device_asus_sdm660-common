@@ -500,3 +500,5 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+-include vendor/lineage-priv/keys/keys.mk
