@@ -447,6 +447,10 @@ PRODUCT_PACKAGES += \
     libsqlite.vendor:64 \
     libsysutils.vendor
 
+# Radio AIDL Wrapper
+PRODUCT_PACKAGES += \
+    android.hardware.radio-service.compat
+
 # Recovery
 PRODUCT_PACKAGES += \
     librecovery_updater_asus
