@@ -649,8 +649,13 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
+    android.hardware.wifi.hostapd@1.3.vendor \
     android.hardware.wifi-service \
+    android.hardware.wifi@1.6.vendor \
     hostapd \
+    hostapd_cli \
+    libwifi-hal-qcom \
+    wificond \
     libwpa_client \
     WifiOverlay \
     wpa_supplicant \
@@ -666,7 +671,8 @@ PRODUCT_COPY_FILES += \
 
 # WiFi Display
 PRODUCT_PACKAGES += \
-    android.media.audio.common.types-V2-cpp
+    android.media.audio.common.types-V2-cpp \
+    libnl
 
 # DeviceSettings
 PRODUCT_PACKAGES += \
