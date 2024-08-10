@@ -43,7 +43,7 @@
         <library name="spatializer" path="libspatialaudio.so"/>
 	<!--Spatial Audio-->
         <!--DOLBY DAP-->
-        <library name="dap" path="libhwdap.so"/>
+        <library name="dap" path="libswdap.so"/>
         <!--DOLBY END-->
         <!--DOLBY GAME-->
         <library name="gamedap" path="libswgamedap.so"/>
