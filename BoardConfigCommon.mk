@@ -104,6 +104,9 @@ ART_BUILD_TARGET_DEBUG := false
 ART_BUILD_HOST_NDEBUG := true
 ART_BUILD_HOST_DEBUG := false
 
+# Allow LZ4 compression
+BOARD_RAMDISK_USE_LZ4 := true
+
 # Bootloader
 TARGET_NO_BOOTLOADER := true
 
