@@ -476,4 +476,12 @@
          The duplication is necessary, because this information is used before the features are
          available to the system.-->
     <bool name="config_freeformWindowManagement">true</bool>
+    
+    <!-- Whether this device prefers to show snapshot or splash screen on back predict target.
+         When set true, there will create windowless starting surface for the preview target, so it
+         won't affect activity's lifecycle. This should only be disabled on low-ram device. -->
+    <bool name="config_predictShowStartingSurface">false</bool>
+    
+    <!-- Whether or not the monitoring on the apps' background battery drain is enabled -->
+    <bool name="config_bg_current_drain_monitor_enabled">true</bool>
 </resources>
