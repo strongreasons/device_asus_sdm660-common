@@ -264,9 +264,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.qcom \
-    android.hardware.light@2.0-impl \
-    android.hardware.light@2.0-service
+    android.hardware.light-service.sdm660
 
 # Media
 PRODUCT_COPY_FILES += \
