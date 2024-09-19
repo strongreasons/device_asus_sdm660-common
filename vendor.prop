@@ -113,12 +113,13 @@ dalvik.vm.heapmaxfree=8m
 
 # Display
 debug.hwui.use_buffer_age=false
+debug.sdm.support_writeback=0
 debug.sf.enable_hwc_vds=1
 debug.sf.enable_gl_backpressure=1
 debug.sf.hw=1
 persist.hwc.mdpcomp.enable=true
 ro.opengles.version=196610
-vendor.display.disable_rotator_downscale=1
+vendor.display.disable_scaler=0
 
 # DRM
 drm.service.enabled=true
@@ -150,11 +151,11 @@ persist.backup.ntpServer=0.pool.ntp.org
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
+ro.vendor.perf.scroll_opt=true
 
 # Radio
 persist.radio.multisim.config=dsds
 persist.radio.aosp_usr_pref_sel=true
-persist.radio.add_power_save=1
 persist.vendor.radio.apm_sim_not_pwdn=1
 persist.vendor.radio.atfwd.start=true
 persist.vendor.radio.custom_ecc=1
@@ -193,8 +194,8 @@ ro.surface_flinger.max_virtual_display_dimension=4096
 ro.surface_flinger.vsync_event_phase_offset_ns=2000000
 ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000
 ro.surface_flinger.set_display_power_timer_ms=10000
-ro.surface_flinger.set_idle_timer_ms=80
-ro.surface_flinger.set_touch_timer_ms=200
+ro.surface_flinger.set_idle_timer_ms=9000
+ro.surface_flinger.set_touch_timer_ms=5000
 
 # UBWC
 vendor.video.disable.ubwc=1
