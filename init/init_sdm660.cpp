@@ -95,6 +95,6 @@ void vendor_load_properties()
     set_avoid_gfxaccel_config();
     NFC_check();
 
-    set_build_fingerprint("google/coral/coral:10/QQ3A.210205.004/7038034:user/release-keys");
-    set_build_description("coral-user 10 QQ3A.210205.004 7038034 release-keys");
+    set_build_fingerprint("google/coral/coral:10/QQ3A.220905.004/8927612:user/release-keys");
+    set_build_description("coral-user 10 QQ3A.220905.004 8927612 release-keys");
 }
