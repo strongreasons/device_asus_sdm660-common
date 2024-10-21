@@ -36,7 +36,6 @@ persist.dirac.acs.storeSettings=1
 vendor.display.enable_default_color_mode=1
 vendor.gralloc.enable_fb_ubwc=1
 vendor.display.disable_skip_validate=1
-persist.hwc.mdpcomp.enable=true
 
 # Filesystem
 fs_mgr.overlayfs.prefer_cache_backing_storage=true
@@ -53,7 +52,6 @@ ro.com.google.rlz_ap_whitelist=y0,y5,y6,y7,y9
 persist.vendor.overlay.izat.optin=rro
 
 # Graphics
-debug.sf.disable_backpressure=1
 debug.sf.latch_unsignaled=0
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
@@ -101,6 +99,3 @@ persist.sys.wfd.virtual=0
 
 # WiFi
 wifi.interface=wlan0
-
-# Zygote
-persist.device_config.runtime_native.usap_pool_enabled=true

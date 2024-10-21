@@ -24,7 +24,11 @@ ro.lmk.upgrade_pressure=100
 ro.lmk.downgrade_pressure=100
 ro.lmk.log_stats=true
 
-# enable debugging
+# Enable debugging
 persist.sys.usb.config=mtp,adb
 ro.adb.secure=0
 ro.debuggable=1
+
+# EGL - Blobcache configuration
+ro.egl.blobcache.multifile=true
+ro.egl.blobcache.multifile_limit=33554432
