@@ -1,18 +1,7 @@
-/*
- * Copyright (C) 2019 The LineageOS Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+//
+// Copyright (C) 2023 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
 
 #define LOG_TAG "TouchscreenGestureService"
 
@@ -23,37 +12,21 @@
 #include <fstream>
 #include "TouchscreenGesture.h"
 
-namespace {
-typedef struct {
-    int32_t keycode;
-    const char* name;
-} GestureInfo;
-
-// id -> info
-const std::unordered_map<int32_t, GestureInfo> kGestureInfoMap = {
-    {0, {748, "Gesture C"}},
-    {1, {749, "Gesture e"}},
-    {2, {750, "Gesture M"}},
-    {3, {751, "Gesture O"}},
-    {4, {752, "Gesture S"}},
-    {5, {753, "Gesture V"}},
-    {6, {754, "Gesture W"}},
-    {7, {755, "Gesture Z"}},
-    {8, {756, "Gesture Swipe Up"}},
-    {9, {757, "Gesture Swipe Down"}},
-    {10, {758, "Gesture Swipe Left"}},
-    {11, {759, "Gesture Swipe Right"}},
-};
-}  // anonymous namespace
-
 namespace vendor {
 namespace lineage {
 namespace touch {
 namespace V1_0 {
 namespace implementation {
 
-static constexpr const char* kGestureNodePath =
-    "/sys/kernel/touchpanel/gesture_node";
+const std::map<int32_t, TouchscreenGesture::GestureInfo> TouchscreenGesture::kGestureInfoMap = {
+    {0, {249, "Letter C", "/proc/touchpanel/letter_c_enable"}},
+    {1, {250, "Letter e", "/proc/touchpanel/letter_e_enable"}},
+    {2, {251, "Letter S", "/proc/touchpanel/letter_s_enable"}},
+    {3, {252, "Letter V", "/proc/touchpanel/letter_v_enable"}},
+    {4, {253, "Letter W", "/proc/touchpanel/letter_w_enable"}},
+    {5, {254, "Letter Z", "/proc/touchpanel/letter_z_enable"}},
+    {6, {255, "One finger swipe up", "/proc/touchpanel/up_swipe_enable"}},
+};
 
 Return<void> TouchscreenGesture::getSupportedGestures(getSupportedGestures_cb resultCb) {
     std::vector<Gesture> gestures;
@@ -73,9 +46,9 @@ Return<bool> TouchscreenGesture::setGestureEnabled(
         return false;
     }
 
-    std::ofstream file(kGestureNodePath);
+    std::ofstream file(entry->second.path);
     file << (enabled ? "1" : "0");
-    LOG(DEBUG) << "Wrote file " << kGestureNodePath << " fail " << file.fail();
+    LOG(DEBUG) << "Wrote file " << entry->second.path << " fail " << file.fail();
     return !file.fail();
 }
 
