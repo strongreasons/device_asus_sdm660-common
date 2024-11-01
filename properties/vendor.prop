@@ -90,13 +90,11 @@ persist.vendor.camera.dual.isp.sync=0
 
 # Display
 debug.sf.enable_hwc_vds=1
-debug.sf.enable_transaction_tracing=false
 debug.sf.hw=1
 debug.sf.recomputecrop=0
-debug.sf.disable_client_composition_cache=1
-debug.sf.predict_hwc_composition_strategy=0
 persist.hwc.mdpcomp.enable=true
 ro.opengles.version=196610
+vendor.display.disable_rotator_downscale=1
 vendor.display.disable_scaler=0
 
 # DPM
@@ -132,6 +130,7 @@ ro.vendor.perf.scroll_opt=true
 
 # Radio
 persist.radio.multisim.config=dsds
+persist.vendor.radio.aosp_usr_pref_sel=true
 persist.vendor.radio.apm_sim_not_pwdn=1
 persist.vendor.radio.custom_ecc=1
 persist.vendor.radio.data_con_rprt=1
