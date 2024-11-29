@@ -15,6 +15,7 @@ af.fast_track_multiplier=1
 audio.deep_buffer.media=true
 audio.offload.video=true
 persist.vendor.audio.fluence.voicecall=true
+persist.vendor.audio.fluence.voicecomm=true
 persist.vendor.audio.fluence.voicerec=true
 persist.vendor.audio.fluence.speaker=false
 persist.vendor.audio.hifi.int_codec=true
@@ -51,7 +52,7 @@ vendor.audio.feature.hwdep_cal.enable=false
 vendor.audio.feature.incall_music.enable=false
 vendor.audio.feature.multi_voice_session.enable=true
 vendor.audio.feature.keep_alive.enable=false
-vendor.audio.feature.kpi_optimize.enable=true
+vendor.audio.feature.kpi_optimize.enable=false
 vendor.audio.feature.maxx_audio.enable=false
 vendor.audio.feature.ras.enable=true
 vendor.audio.feature.record_play_concurency.enable=false
@@ -69,7 +70,7 @@ vendor.audio.feature.snd_mon.enable=true
 vendor.audio.flac.sw.decoder.24bit=true
 vendor.audio_hal.period_size=192
 vendor.audio.hw.aac.encoder=true
-vendor.audio.offload.buffer.size.kb=64
+vendor.audio.offload.buffer.size.kb=256
 vendor.audio.offload.gapless.enabled=true
 vendor.audio.offload.multiaac.enable=true
 vendor.audio.offload.multiple.enabled=false
@@ -116,6 +117,10 @@ vendor.display.disable_rotator_downscale=1
 # DRM
 drm.service.enabled=true
 
+# EGL - Blobcache configuration
+ro.egl.blobcache.multifile=true
+ro.egl.blobcache.multifile_limit=33554432
+
 # FM
 vendor.fm.a2dp.conc.disabled=false
 
@@ -136,7 +141,6 @@ persist.vendor.radio.procedure_bytes=SKIP
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.sib16_support=1
 vendor.rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
-ro.telephony.iwlan_operation_mode=legacy
 ro.telephony.default_network=20,20
 ro.com.android.dataroaming=false
 persist.vendor.radio.enableadvancedscan=false
@@ -177,8 +181,11 @@ ro.surface_flinger.set_idle_timer_ms=9000
 vendor.video.disable.ubwc=1
 
 # USB
-vendor.usb.use_ffs_mtp=1
+ro.usb.uvc.enabled=true
 vendor.usb.diag.func.name=diag
+vendor.usb.use_ffs_mtp=1
+sys.usb.mtp.batchcancel=1
+vendor.usb.use_gadget_hal=1
 
 # Zram-writeback
 ro.zram.mark_idle_delay_mins=60
@@ -188,3 +195,6 @@ ro.zram.periodic_wb_delay_hours=24
 # Lmk
 ro.config.low_ram = false
 ro.lmk.log_stats = true
+
+# Zygote
+zygote.critical_window.minute=10

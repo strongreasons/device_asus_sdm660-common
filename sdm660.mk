@@ -7,9 +7,10 @@
 # Inherit the proprietary files
 $(call inherit-product, vendor/asus/sdm660-common/sdm660-common-vendor.mk)
 
-# Enable updating of APEXes
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
-PRODUCT_COMPRESSED_APEX := false
+$(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
+
+# UFFD GC
+OVERRIDE_ENABLE_UFFD_GC := false
 
 # Default is nosdcard, S/W button enabled in resource
 PRODUCT_CHARACTERISTICS := nosdcard
@@ -82,6 +83,11 @@ PRODUCT_PACKAGES += \
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
 
+# DebugFS
+ifeq ($(TARGET_KERNEL_VERSION),4.19)
+PRODUCT_SET_DEBUGFS_RESTRICTIONS ?= true
+endif
+
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0 \
@@ -104,6 +110,9 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5 \
     vendor.qti.hardware.camera.device@1.0 \
     vendor.qti.hardware.camera.device@1.0.vendor \
+    liblz4.vendor \
+    libutilscallstack.vendor \
+    libpng.vendor:32 \
     libxml2
 
 # Cgroup and task_profiles
@@ -148,6 +157,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.mapper@1.0.vendor \
     vendor.qti.hardware.display.mapper@1.1.vendor \
     vendor.qti.hardware.display.mapper@2.0.vendor \
+    vendor.display.config@1.0.vendor \
     vendor.display.config@2.0
 
 # Display Device Config
@@ -160,12 +170,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Doze mode
 PRODUCT_PACKAGES += \
-    Doze
+    DeviceDoze
 
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
-    android.hardware.drm-service.clearkey
+    android.hardware.drm-service.clearkey \
+    libunwindstack.vendor \
+    libhidlmemory.vendor:64
 
 # FM
 PRODUCT_PACKAGES += \
@@ -186,7 +198,8 @@ PRODUCT_PACKAGES += \
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0.vendor
+    android.hardware.gatekeeper@1.0.vendor \
+    libion.vendor
 
 # Health
 PRODUCT_PACKAGES += \
@@ -205,6 +218,7 @@ $(call inherit-product, $(COMMON_PATH)/gps/gps_vendor_product.mk)
 
 PRODUCT_PACKAGES += \
     libsensorndkbridge \
+    libcurl.vendor \
     libwifi-hal-ctrl
 
 PRODUCT_PACKAGES += \
@@ -247,6 +261,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
+# Kernel
+TARGET_KERNEL_BUILD_HOST := beastmachine
+TARGET_KERNEL_BUILD_USER := "SonicBSV"
+
 # Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0.vendor
@@ -256,10 +274,6 @@ PRODUCT_PACKAGES += \
     lights.qcom \
     android.hardware.light@2.0-impl \
     android.hardware.light@2.0-service
-
-# Lineage Health
-PRODUCT_PACKAGES += \
-    vendor.lineage.health-service.default
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -293,7 +307,8 @@ PRODUCT_PACKAGES += \
 
 # Network
 PRODUCT_PACKAGES += \
-    android.system.net.netd@1.1.vendor
+    android.system.net.netd@1.1.vendor \
+    libnetutils.vendor
 
 # NFC
 PRODUCT_COPY_FILES += \
@@ -308,12 +323,10 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.2-service
+    android.hardware.nfc@1.1-service
 
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
-    NfcNci \
-    SecureElement \
     Tag
 
 # OEM Unlock reporting
@@ -323,6 +336,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Neuralnetworks
 PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks@1.3.vendor
+
+# GRF/VF
+BOARD_SHIPPING_API_LEVEL := 30
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -383,11 +399,14 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.freeform_window_management.xml \
+    frameworks/native/data/etc/android.software.picture_in_picture.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.picture_in_picture.xml \
     frameworks/native/data/etc/android.software.app_widgets.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.app_widgets.xml \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml \
-    frameworks/native/data/etc/android.software.opengles.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml \
-    frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
+    frameworks/native/data/etc/android.software.opengles.deqp.level-2021-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml \
+    frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/android.software.ipsec_tunnel_migration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnel_migration.xml \
+    frameworks/native/data/etc/android.software.vulkan.deqp.level-2021-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
 # Power
@@ -426,18 +445,15 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/qmi/qmi_fw.conf:$(TARGET_COPY_OUT_VENDOR)/etc/qmi_fw.conf
 
 PRODUCT_PACKAGES += \
+    libcrypto_utils.vendor \
+    libjsoncpp.vendor \
     libjson \
     libqti_vndfwk_detect.vendor \
     libvndfwk_detect_jni.qti \
     libvndfwk_detect_jni.qti.vendor
 
-# QNS
-PRODUCT_PACKAGES += \
-    libstdc++.vendor
-
 # RIL
 PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full \
     android.hardware.radio@1.5 \
     android.hardware.radio@1.5.vendor \
     android.hardware.radio.config@1.2 \
@@ -449,15 +465,13 @@ PRODUCT_PACKAGES += \
     android.hardware.secure_element@1.1.vendor \
     android.hardware.secure_element@1.2.vendor \
     libavservices_minijail.vendor \
-    librmnetctl
+    librmnetctl \
+    libsqlite.vendor:64 \
+    libsysutils.vendor
 
 # Recovery
 PRODUCT_PACKAGES += \
     librecovery_updater_asus
-
-# Remove unwanted packages
-PRODUCT_PACKAGES += \
-    RemovePackages
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -473,11 +487,14 @@ PRODUCT_PACKAGES += \
     init.qcom.asus.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
-    init.target_dap.rc \
     init.asus_parts.rc \
     init.recovery.qcom.rc \
     init.target.rc \
     ueventd.qcom.rc
+
+# Screen density
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG ?= xhdpi
 
 # Seccomp
 PRODUCT_COPY_FILES += \
@@ -488,7 +505,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
     android.hardware.sensors@1.0-service \
-    android.frameworks.sensorservice@1.0.vendor
+    android.frameworks.sensorservice@1.0 \
+    android.frameworks.sensorservice@1.0.vendor \
+    libpower.vendor
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
@@ -496,6 +515,9 @@ PRODUCT_COPY_FILES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(COMMON_PATH)
+
+QCOM_SOONG_NAMESPACE := \
+    $(COMMON_PATH)/qcom-caf
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -507,9 +529,14 @@ PRODUCT_PACKAGES += \
     ims_ext_common.xml \
     qti-telephony-hidl-wrapper \
     qti_telephony_hidl_wrapper.xml \
+    qti-telephony-hidl-wrapper-prd \
+    qti_telephony_hidl_wrapper_prd.xml \
     qti-telephony-utils \
     qti_telephony_utils.xml \
     telephony-ext
+    
+PRODUCT_BOOT_JARS += \
+    telephony-ext   
 
 # Thermal
 PRODUCT_PACKAGES += \
@@ -519,29 +546,29 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.asus_sdm660
 
-# Shipping API level
-PRODUCT_SHIPPING_API_LEVEL := 27
-
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
-
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.basic
+    usb_compositions.conf \
+    android.hardware.usb@1.3-service.basic \
+    android.hardware.usb.gadget@1.2-service-qti
+
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/opensource/usb/etc
 
 # Vibrator
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service
-
-PRODUCT_COPY_FILES += \
-    vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
+$(call inherit-product, vendor/qcom/opensource/vibrator/vibrator-vendor-product.mk)
 
 # FIXME: master: compat for libprotobuf
 # See https://android-review.googlesource.com/c/platform/prebuilts/vndk/v28/+/1109518
 PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full-vendorcompat \
-    libprotobuf-cpp-lite-vendorcompat
+    libprotobuf-cpp-full-3.9.1-vendorcompat \
+    libprotobuf-cpp-lite-3.9.1-vendorcompat
+    
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-core/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-lite.so \
+    prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-core/libprotobuf-cpp-full.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-full.so \
+    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-core/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libprotobuf-cpp-lite.so \
+    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-core/libprotobuf-cpp-full.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libprotobuf-cpp-full.so
 
 # VR
 PRODUCT_PACKAGES += \
@@ -549,11 +576,15 @@ PRODUCT_PACKAGES += \
     android.hardware.vr@1.0-service \
     vr.sdm660
 
+# VNDK
+PRODUCT_PACKAGES += \
+    libstdc++_vendor
+
 # Wifi
 PRODUCT_PACKAGES += \
-    android.hardware.wifi.hostapd@1.0.vendor \
-    android.hardware.wifi@1.0-service \
-    android.hardware.wifi@1.5.vendor \
+    android.hardware.wifi.hostapd@1.3.vendor \
+    android.hardware.wifi-service \
+    android.hardware.wifi@1.6.vendor \
     hostapd \
     hostapd_cli \
     libwifi-hal-qcom \
@@ -568,6 +599,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(COMMON_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
-# DeviceSettings
+# WiFi Display
 PRODUCT_PACKAGES += \
-   DeviceSettings
+    android.media.audio.common.types-V2-cpp
