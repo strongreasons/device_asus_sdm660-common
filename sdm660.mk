@@ -177,7 +177,8 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
     android.hardware.drm-service.clearkey \
     libunwindstack.vendor \
-    libhidlmemory.vendor:64
+    libhidlmemory.vendor:64 \
+    libcrypto-v33
 
 # FM
 PRODUCT_PACKAGES += \
