@@ -38,6 +38,9 @@ persist.sys.iscdfinger_998eas=1
 persist.vendor.overlay.izat.optin=rro
 
 # Graphics
+debug.sdm.support_writeback=0
+debug.sf.disable_backpressure=1
+debug.sf.latch_unsignaled=1
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 persist.hwc.enable_vds=1
@@ -55,6 +58,10 @@ ro.hwui.text_small_cache_width=1024
 ro.hwui.text_small_cache_height=1024
 ro.hwui.text_large_cache_width=2048
 ro.hwui.text_large_cache_height=2048
+
+# Increase cached app limit
+ro.vendor.qti.sys.fw.bg_apps_limit=32
+vendor.perf.gestureflingboost.enable=true
 
 # Media
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
@@ -83,6 +90,9 @@ persist.sys.fflag.override.settings_network_and_internet_v2=true
 ril.subscription.types=NV,RUIM
 telephony.lteOnCdmaDevice=1
 
+# Support USB OTG
+rp.usb_host=1
+
 # Time
 persist.timed.enable=true
 
@@ -90,5 +100,5 @@ persist.timed.enable=true
 persist.debug.wfd.enable=1
 persist.sys.wfd.virtual=0
 
-# Zygote
+# Zygote preforking
 persist.device_config.runtime_native.usap_pool_enabled=true
