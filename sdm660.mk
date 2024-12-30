@@ -83,11 +83,6 @@ PRODUCT_PACKAGES += \
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
 
-# DebugFS
-ifeq ($(TARGET_KERNEL_VERSION),4.19)
-PRODUCT_SET_DEBUGFS_RESTRICTIONS ?= true
-endif
-
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0 \
@@ -541,9 +536,9 @@ PRODUCT_PACKAGES += \
     qti-telephony-utils \
     qti_telephony_utils.xml \
     telephony-ext
-    
+
 PRODUCT_BOOT_JARS += \
-    telephony-ext   
+    telephony-ext
 
 # Thermal
 PRODUCT_PACKAGES += \
