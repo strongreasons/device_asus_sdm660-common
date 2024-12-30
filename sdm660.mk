@@ -119,6 +119,11 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_PACKAGES += \
     disable_configstore
 
+# DeviceAsWebCam
+PRODUCT_PACKAGES += \
+    DeviceAsWebcam \
+    AsusDeviceAsWebcam
+
 # Dex/ART optimization
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
