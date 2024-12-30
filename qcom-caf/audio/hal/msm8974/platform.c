@@ -19,6 +19,7 @@
 
 #define LOG_TAG "msm8974_platform"
 //#define LOG_NDEBUG 0
+#define LOG_NDDEBUG 0
 /*#define VERY_VERY_VERBOSE_LOGGING*/
 #ifdef VERY_VERY_VERBOSE_LOGGING
 #define ALOGVV ALOGV
@@ -183,10 +184,6 @@
 #define EVENT_EXTERNAL_MIC   "qc_ext_mic"
 #define MAX_CAL_NAME 20
 #define MAX_MIME_TYPE_LENGTH 30
-
-//huaqin add for enhance google record recognize by xudayi at 2018/05/03 start
-#define AUDIO_PARAMETER_KEY_MIC_GOOGLE "SET_GOOGLE"
-//huaqin add for enhance google record recognize by xudayi at 2018/05/03 end
 #define MAX_SND_CARD_NAME_LENGTH 100
 
 #define GET_IN_DEVICE_INDEX(SND_DEVICE) ((SND_DEVICE) - (SND_DEVICE_IN_BEGIN))
@@ -320,9 +317,6 @@ struct platform_data {
     bool fluence_nn_enabled;
     int  fluence_type;
     int  fluence_mode;
-    //huaqin add for enhance google record recognize by xudayi at 2018/05/03 start
-    int google_choose;
-    //huaqin add for enhance google record recognize by xudayi at 2018/05/03 end
     int  afe_loopback;
     char fluence_cap[PROPERTY_VALUE_MAX];
     bool ambisonic_capture;
@@ -349,7 +343,7 @@ struct platform_data {
     /* Audio calibration related functions */
     void                       *acdb_handle;
     int                        voice_feature_set;
-    acdb_init_t                acdb_init;
+    acdb_init_v2_t             acdb_init;
     acdb_init_v3_t             acdb_init_v3;
     acdb_init_v4_t             acdb_init_v4;
     acdb_deallocate_t          acdb_deallocate;
@@ -2957,7 +2951,7 @@ static int platform_acdb_init(void *platform)
         node = list_head(&my_data->acdb_meta_key_list);
         key_info = node_to_item(node, struct meta_key_list, list);
         key = key_info->cal_info.nKey;
-        result = my_data->acdb_init();
+        result = my_data->acdb_init(snd_card_name, cvd_version, key);
     }
 
     /* Save these variables in platform_data. These will be used
@@ -3725,7 +3719,7 @@ void *platform_init(struct audio_device *adev)
             ALOGE("%s: dlsym error %s for acdb_loader_init_v3", __func__, dlerror());
         }
 
-        my_data->acdb_init = (acdb_init_t)dlsym(my_data->acdb_handle,
+        my_data->acdb_init = (acdb_init_v2_t)dlsym(my_data->acdb_handle,
                                                      "acdb_loader_init_v2");
         if (my_data->acdb_init == NULL) {
             ALOGE("%s: dlsym error %s for acdb_loader_init_v2", __func__, dlerror());
@@ -4866,6 +4860,8 @@ static int find_index(struct name_to_index * table, int32_t len, const char * na
             goto done;
         }
     }
+    ALOGE("%s: Could not find index for name = %s",
+            __func__, name);
     ret = -ENODEV;
 done:
     return ret;
@@ -7433,7 +7429,22 @@ snd_device_t platform_get_input_snd_device(void *platform,
                 if ((my_data->fluence_type & FLUENCE_DUAL_MIC) &&
                     (my_data->source_mic_type & SOURCE_DUAL_MIC) &&
                     (channel_count == 2))
-                    snd_device = SND_DEVICE_IN_HANDSET_DMIC_STEREO;
+                    switch (adev->camera_orientation) {
+                        case CAMERA_BACK_LANDSCAPE:
+                        case CAMERA_FRONT_INVERT_LANDSCAPE:
+                            snd_device = SND_DEVICE_IN_SPEAKER_DMIC_STEREO;
+                            break;
+                        case CAMERA_BACK_INVERT_LANDSCAPE:
+                        case CAMERA_BACK_PORTRAIT:
+                        case CAMERA_FRONT_LANDSCAPE:
+                        case CAMERA_FRONT_PORTRAIT:
+                            snd_device = SND_DEVICE_IN_HANDSET_DMIC_STEREO;
+                            break;
+                        default:
+                            ALOGW("%s: invalid camera orientation %08x", __func__, adev->camera_orientation);
+                            snd_device = SND_DEVICE_IN_HANDSET_DMIC_STEREO;
+                            break;
+                    }
                 else
                     snd_device = SND_DEVICE_IN_CAMCORDER_MIC;
             }
@@ -7476,16 +7487,9 @@ snd_device_t platform_get_input_snd_device(void *platform,
                     (my_data->source_mic_type & SOURCE_DUAL_MIC)) {
                     if (in != NULL && in->enable_aec)
                         snd_device = SND_DEVICE_IN_HANDSET_DMIC_AEC;
-                    // Modify by AMT.meng.lv, 05/11/2020, "Fully optimize VOIP call issues" begin
                     else {
                         snd_device = SND_DEVICE_IN_VOICE_REC_DMIC_STEREO;
                     }
-                    // Modify by AMT.meng.lv, 05/11/2020, "Fully optimize VOIP call issues" end
-                    //huaqin add for enhance google record recognize by xudayi at 2018/05/03 start
-                    if (my_data->google_choose == 1) {
-                         snd_device = SND_DEVICE_IN_HANDSET_DMIC_STEREO;
-                    }
-                    //huaqin add for enhance google record recognize by xudayi at 2018/05/03 end
                 }
                 in->enable_ec_port = true;
             } else if (((channel_mask == AUDIO_CHANNEL_IN_FRONT_BACK) ||
@@ -8488,21 +8492,6 @@ int platform_set_parameters(void *platform, struct str_parms *parms)
         if (ret)
             ALOGE("%s: Failed to set slow talk err: %d", __func__, ret);
     }
-
-	//huaqin add for enhance google record recognize by xudayi at 2018/05/03 start
-	int google_ret;
-	google_ret = str_parms_get_str(parms, AUDIO_PARAMETER_KEY_MIC_GOOGLE, value, sizeof(value));
-	ALOGD("%s:google_ret: %d", __func__ , google_ret);
-	if (google_ret >= 0) {
-		if ('1' == value[0]) {
-			my_data->google_choose = 1;
-		} else {
-			my_data->google_choose = 0;
-		}
-		ALOGD("%s:google_choose set:%d", __func__, my_data->google_choose);
-		str_parms_del(parms, AUDIO_PARAMETER_KEY_MIC_GOOGLE);
-	}
-	//huaqin add for enhance google record recognize by xudayi at 2018/05/03 end
 
     err = str_parms_get_str(parms, AUDIO_PARAMETER_KEY_HD_VOICE, value, len);
     if (err >= 0) {
@@ -10667,10 +10656,10 @@ int platform_set_snd_device_backend(snd_device_t device, const char *backend_tag
         goto done;
     }
 
-    /*ALOGV("%s: backend_tag_table[%s]: old = %s new = %s", __func__,
+    ALOGV("%s: backend_tag_table[%s]: old = %s new = %s", __func__,
           platform_get_snd_device_name(device),
           backend_tag_table[device] != NULL ? backend_tag_table[device]: "null",
-          backend_tag);*/
+          backend_tag);
 
     if (backend_tag != NULL ) {
         if (backend_tag_table[device]) {
@@ -10683,7 +10672,7 @@ int platform_set_snd_device_backend(snd_device_t device, const char *backend_tag
         if (hw_interface_table[device])
             free(hw_interface_table[device]);
 
-        /*ALOGV("%s: hw_interface_table[%d] = %s", __func__, device, hw_interface);*/
+        ALOGV("%s: hw_interface_table[%d] = %s", __func__, device, hw_interface);
         hw_interface_table[device] = strdup(hw_interface);
     }
 done:
