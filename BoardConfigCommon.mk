@@ -156,6 +156,10 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_SOURCE := kernel/asus/sdm660
 TARGET_KERNEL_VERSION := 4.19
 
+# Kernel Clang Flags
+KERNEL_CC := CC=clang
+override KERNEL_TOOLCHAIN_PREFIX_arm := arm-linux-android-
+
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 GNSS_HIDL_VERSION := 2.1
