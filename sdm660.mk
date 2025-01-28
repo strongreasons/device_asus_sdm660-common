@@ -18,10 +18,6 @@ PRODUCT_CHARACTERISTICS := nosdcard
 # Common Tree Path
 COMMON_PATH := device/asus/sdm660-common
 
-# AID/fs configs
-PRODUCT_PACKAGES += \
-    fs_config_files
-
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@7.1-impl:32 \
