@@ -56,6 +56,10 @@ sdm.debug.disable_skip_validate=1
 # IMS
 persist.dbg.ims_volte_enable=1
 
+# Increase cached app limit
+ro.vendor.qti.sys.fw.bg_apps_limit=32
+vendor.perf.gestureflingboost.enable=true
+
 # Media
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 media.stagefright.thumbnail.prefer_hw_codecs=true
