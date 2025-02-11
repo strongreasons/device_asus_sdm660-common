@@ -93,10 +93,3 @@ persist.timed.enable=true
 # WiFi Display
 persist.debug.wfd.enable=1
 persist.sys.wfd.virtual=0
-
-# Infinity X properties
-ro.infinity.soc=Qualcomm® Snapdragon™ 636
-ro.infinity.battery=5000 mAh
-ro.infinity.display=1080 x 2160 pixels, 60Hz
-ro.infinity.camera=13MP/5MP/8MP + 16MP/5MP/16MP
-ro.product.marketname=Asus Zenfone Max Pro M1
