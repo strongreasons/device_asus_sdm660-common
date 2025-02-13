@@ -128,8 +128,8 @@ USE_DEX2OAT_DEBUG := false
 
 # Display
 PRODUCT_PACKAGES += \
-    gralloc.sdm660 \
-    hwcomposer.sdm660 \
+    gralloc.qcom \
+    hwcomposer.qcom \
     memtrack.sdm660 \
     libdisplayconfig \
     libgralloc.qti \
