@@ -43,6 +43,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "omx_log.h"
 #include <errno.h>
 
+using namespace std;
 #define SLEEP_MS 100
 
 // omx_cmd_queue destructor
