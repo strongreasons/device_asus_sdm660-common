@@ -7,7 +7,6 @@
 COMMON_PATH := device/asus/sdm660-common
 
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
-BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
 
 # Architecture
 TARGET_ARCH := arm64
