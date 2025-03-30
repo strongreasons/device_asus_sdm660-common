@@ -89,6 +89,10 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
     vendor.qti.hardware.btconfigstore@2.0.vendor
 
+# CAFIMSAdapter
+PRODUCT_PACKAGES += \
+    CAFIMSAdapter
+
 # Camera
 PRODUCT_PACKAGES += \
     camera.sdm660 \
