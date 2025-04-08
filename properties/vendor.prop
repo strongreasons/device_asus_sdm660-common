@@ -88,9 +88,11 @@ vendor.voice.path.for.pcm.voip=false
 # Bluetooth
 persist.vendor.bt.aac_frm_ctl.enabled=true
 persist.vendor.bluetooth.modem_nv_support=true
-bluetooth.hardware.power.operating_voltage_mv=3300
 vendor.qcom.bluetooth.soc=cherokee
 persist.vendor.qcom.bluetooth.soc=cherokee
+persist.vendor.qcom.bluetooth.scram.enabled=false
+persist.vendor.qcom.bluetooth.enable.splita2dp=true
+ro.vendor.bluetooth.wipower=false
 
 # Camera
 persist.vendor.camera.eis.enable=1
