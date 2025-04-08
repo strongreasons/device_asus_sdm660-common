@@ -237,10 +237,6 @@ PRODUCT_PACKAGES += \
     libhwbinder \
     libhwbinder.vendor
 
-# Inherit several Android Go Configurations(Beneficial for everyone, even on non-Go devices)
-PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
-PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-image-profile.txt
-
 # Input
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl
@@ -257,10 +253,6 @@ PRODUCT_COPY_FILES += \
 # IRQ
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
-
-# Kernel
-TARGET_KERNEL_BUILD_HOST := beastmachine
-TARGET_KERNEL_BUILD_USER := "SonicBSV"
 
 # Keymaster
 PRODUCT_PACKAGES += \
@@ -468,7 +460,6 @@ PRODUCT_PACKAGES += \
     init.qcom.asus.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
-    init.asus_parts.rc \
     init.recovery.qcom.rc \
     init.target.rc \
     ueventd.qcom.rc
