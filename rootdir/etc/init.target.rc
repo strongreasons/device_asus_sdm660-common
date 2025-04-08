@@ -146,7 +146,7 @@ on property:vendor.dcvs.prop=1
 
 
 on property:init.svc.vendor.charger=running
-    start qcom-post-boot
+    start vendor.qcom-post-boot
     start vendor.hvdcp_opti
     start vendor.power_off_alarm
 
