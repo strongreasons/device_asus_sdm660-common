@@ -122,7 +122,6 @@ PRODUCT_PACKAGES += \
 
 # DeviceAsWebCam
 PRODUCT_PACKAGES += \
-    DeviceAsWebcam \
     AsusDeviceAsWebcam
 
 # Dex/ART optimization
