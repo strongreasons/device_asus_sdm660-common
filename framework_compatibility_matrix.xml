@@ -32,19 +32,22 @@
 </hal>
 <hal format="aidl" optional="true">
     <name>android.hardware.drm</name>
+    <version>1</version>
     <interface>
         <name>IDrmFactory</name>
         <instance>clearkey</instance>
     </interface>
 </hal>
-<hal format="hidl" optional="true">
-    <name>android.hardware.gnss</name>
-    <version>1.0</version>
-    <interface>
-        <name>IGnss</name>
-        <instance>gnss_vendor</instance>
-    </interface>
-</hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.gnss</name>
+        <version>1.0-1</version>
+        <version>2.0-1</version>
+        <interface>
+            <name>IGnss</name>
+            <instance>default</instance>
+            <instance>gnss_vendor</instance>
+        </interface>
+    </hal>
 <hal format="aidl" optional="true">
     <name>android.hardware.health</name>
     <version>3</version>
@@ -205,17 +208,17 @@
         <instance>default</instance>
     </interface>
 </hal>
-<hal format="hidl" optional="true">
-    <name>vendor.qti.gnss</name>
-    <version>1.0-2</version>
-    <version>2.0-1</version>
-    <version>3.0</version>
-    <version>4.0</version>
-    <interface>
-        <name>ILocHidlGnss</name>
-        <instance>gnss_vendor</instance>
-    </interface>
-</hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.qti.gnss</name>
+        <version>1.0-2</version>
+        <version>2.0-1</version>
+        <version>3.0</version>
+        <version>4.0-3</version>
+        <interface>
+            <name>ILocHidlGnss</name>
+            <instance>gnss_vendor</instance>
+        </interface>
+    </hal>
 <hal format="hidl" optional="true">
     <name>vendor.qti.hardware.alarm</name>
     <version>1.0</version>
@@ -347,7 +350,7 @@
 </hal>
 <hal format="hidl" optional="true">
     <name>vendor.qti.hardware.radio.ims</name>
-    <version>1.0-8</version>
+    <version>1.0-9</version>
     <interface>
         <name>IImsRadio</name>
         <instance>imsradio0</instance>
@@ -401,7 +404,7 @@
 </hal>
 <hal format="hidl" optional="true">
     <name>vendor.qti.hardware.radio.uim_remote_client</name>
-    <version>1.0</version>
+    <version>1.0-2</version>
     <interface>
         <name>IUimRemoteServiceClient</name>
         <instance>uimRemoteClient0</instance>
@@ -473,14 +476,6 @@
         <instance>default</instance>
     </interface>
 </hal>
-<hal format="aidl" optional="true">
-    <name>android.hardware.usb.gadget</name>
-    <version>1</version>
-    <interface>
-        <name>IUsbGadget</name>
-        <instance>default</instance>
-    </interface>
-</hal>
 <hal format="hidl" optional="true">
     <name>vendor.qti.hardware.perf</name>
     <version>2.0-2</version>
@@ -502,6 +497,14 @@
     <version>1</version>
     <interface>
         <name>IThermal</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
+<name>android.hardware.usb.gadget</name>
+    <version>1</version>
+    <interface>
+        <name>IUsbGadget</name>
         <instance>default</instance>
     </interface>
 </hal>
