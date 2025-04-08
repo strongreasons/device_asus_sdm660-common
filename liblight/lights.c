@@ -38,6 +38,9 @@
 #define DEFAULT_LOW_PERSISTENCE_MODE_BRIGHTNESS 0x80
 #endif
 
+#define BRIGHTNESS_MODE_USER 0
+#define BRIGHTNESS_MODE_LOW_PERSISTENCE 1
+
 /******************************************************************************/
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
@@ -118,13 +121,14 @@ static int
 set_light_backlight(struct light_device_t* dev,
         struct light_state_t const* state)
 {
+    if (!dev || !state) {
+        return -1;
+    }
+
     int err = 0;
     int brightness = rgb_to_brightness(state);
     unsigned int lpEnabled =
         state->brightnessMode == BRIGHTNESS_MODE_LOW_PERSISTENCE;
-    if(!dev) {
-        return -1;
-    }
 
     pthread_mutex_lock(&g_lock);
     // Toggle low persistence mode state
@@ -158,14 +162,14 @@ static int
 set_speaker_light_locked(struct light_device_t* dev,
         struct light_state_t const* state)
 {
+    if (!dev || !state) {
+        return -1;
+    }
+
     int red, green;
     int breath = 0;
     int onMS, offMS;
     uint32_t colorRGB;
-
-    if(!dev) {
-        return -1;
-    }
 
     // Disable LED's
     write_int(RED_LED_FILE, 0);
@@ -202,7 +206,7 @@ set_speaker_light_locked(struct light_device_t* dev,
 
      if (breath) {
         if (state == &g_notification) {
-                if(write_int(GREEN_BREATH_FILE, breath))
+                if (write_int(GREEN_BREATH_FILE, breath) != 0)
                 write_int(GREEN_LED_FILE, 0);
         } else if (write_int(RED_BREATH_FILE, breath))
                 write_int(RED_LED_FILE, 0);
@@ -292,8 +296,8 @@ static int open_lights(const struct hw_module_t* module, char const* name,
     int (*set_light)(struct light_device_t* dev,
             struct light_state_t const* state);
 
-    if (0 == strcmp(LIGHT_ID_BACKLIGHT, name)) {
-        set_light = set_light_backlight;
+    if (strcmp(LIGHT_ID_BACKLIGHT, name) == 0) {
+    set_light = set_light_backlight;
     } else if (0 == strcmp(LIGHT_ID_BATTERY, name))
         set_light = set_light_battery;
     else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name))
