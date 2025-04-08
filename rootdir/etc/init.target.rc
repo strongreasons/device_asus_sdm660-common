@@ -52,6 +52,9 @@ on fs
     mkdir /mnt/vendor/persist/bms 0700 root system
     write /sys/kernel/boot_adsp/boot 1
 
+    # Switch owner to system for usb host and peripheral mode
+    chown system system /sys/devices/platform/soc/a800000.ssusb/mode
+
     mkdir /mnt/vendor/dsp 0770 root root
     copy /vendor/dsp/cdsp/fastrpc_shell_3 /mnt/vendor/dsp/fastrpc_shell_3
     chmod 0644 /mnt/vendor/dsp/fastrpc_shell_3
@@ -89,15 +92,6 @@ on boot
     setprop vendor.usb.rmnet.inst.name "rmnet"
     setprop vendor.usb.dpl.inst.name "dpl"
     setprop vendor.usb.qdss.inst.name "qdss"
-    setprop vendor.usb.controller a800000.dwc3
-    write /sys/module/usb_f_qcrndis/parameters/rndis_dl_max_xfer_size 15916
-
-on boot && property:persist.vendor.usb.controller.default=*
-    setprop vendor.usb.controller ${persist.vendor.usb.controller.default}
-
-on property:vendor.usb.controller=*
-    setprop sys.usb.controller ${vendor.usb.controller}
-    write /sys/module/usb_f_qcrndis/parameters/rndis_dl_max_xfer_size 15916
 
 #Peripheral manager
 service vendor.per_mgr /system/vendor/bin/pm-service
@@ -154,7 +148,6 @@ on property:vendor.dcvs.prop=1
 on property:init.svc.vendor.charger=running
     start qcom-post-boot
     start vendor.hvdcp_opti
-    setprop vendor.usb.controller a800000.dwc3
     start vendor.power_off_alarm
 
 service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti

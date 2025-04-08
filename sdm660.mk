@@ -488,7 +488,7 @@ PRODUCT_COPY_FILES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(COMMON_PATH)
+    vendor/qcom/opensource/usb/etc
 
 QCOM_SOONG_NAMESPACE := \
     $(COMMON_PATH)/qcom-caf
@@ -526,8 +526,8 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.3-service.basic \
     android.hardware.usb.gadget-service.qti
 
-PRODUCT_SOONG_NAMESPACES += \
-    vendor/qcom/opensource/usb/etc
+PRODUCT_VENDOR_PROPERTIES += \
+    vendor.usb.controller=a800000.dwc3
 
 # Vibrator
 $(call inherit-product, vendor/qcom/opensource/vibrator/vibrator-vendor-product.mk)
