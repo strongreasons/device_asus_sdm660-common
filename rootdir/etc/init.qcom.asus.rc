@@ -27,12 +27,14 @@
 #
 #
 
+# Smart charging
 on boot
     chown system system /sys/class/power_supply/battery/charging_enabled
     chmod 0660 /sys/class/power_supply/battery/charging_enabled
     chown system system /sys/class/power_supply/battery/device/smartchg_stop_charging
     chmod 0660 /sys/class/power_supply/battery/device/smartchg_stop_charging
 
+# DT2W & Gestures
 on boot
     # Tap to wake node
     chown system system /proc/tpd_gesture
@@ -45,6 +47,7 @@ on property:ro.product.vendor.model=*
 on property:sys.boot_completed=1 && property:vendor.usb.uvc.function.init=1
     write /config/usb_gadget/g1/functions/uvc.0/streaming_maxpacket ${ro.usb.uvc.payload_transfer_size}
 
+# NFC
 service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
     override
     class hal
