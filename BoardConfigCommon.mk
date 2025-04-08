@@ -7,6 +7,7 @@
 COMMON_PATH := device/asus/sdm660-common
 
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+RELAX_USES_LIBRARY_CHECK := true
 
 # Architecture
 TARGET_ARCH := arm64
