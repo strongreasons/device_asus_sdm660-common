@@ -1,1 +1,2 @@
 allow location sysfs_socinfo_sensitive:file { read };
+allow location fwk_sensor_service:service_manager { find };

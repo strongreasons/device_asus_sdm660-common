@@ -17,8 +17,8 @@
 /persist(/.*)?												u:object_r:mnt_vendor_file:s0
 
 # Sensors
-/sys/devices/virtual/input/input[0-9]+/stk3x[0-9]x-light(/.*)?						u:object_r:sysfs_sensors:s0
-/sys/devices/virtual/input/input[0-9]+/stk3x[0-9]x-proximity(/.*)?					u:object_r:sysfs_sensors:s0
+/sys/devices/virtual/input/input[0-9]+/stk3x[0-9]x-light(/.*)?						u:object_r:sysfs_input:s0
+/sys/devices/virtual/input/input[0-9]+/stk3x[0-9]x-proximity(/.*)?					u:object_r:sysfs_input:s0
 /sys/module/stk3x[0-9]x/parameters/call_status_flag							u:object_r:sysfs_call_status:s0
 
 # Vibrator
@@ -34,3 +34,11 @@
 # Kcal
 /sys/devices/platform/kcal_ctrl.0(/.*)?                                                                                           u:object_r:kcal_dev:s0
 /sys/bus/platform/drivers/kcal_ctrl(/.*)?                                                                                         u:object_r:kcal_dev:s0
+
+/sys/devices/platform/soc/ca0c000\.qcom,cci/ca0c000.qcom,cci:qcom,camera@0/video4linux/video4(/.*)?     u:object_r:sysfs_graphics:s0
+/sys/devices/platform/soc/ca0c000\.qcom,cci/ca0c000.qcom,cci:qcom,camera@1/video4linux/video5(/.*)?     u:object_r:sysfs_graphics:s0
+/sys/devices/platform/soc/ca0c000\.qcom,cci/ca0c000.qcom,cci:qcom,camera@2/video4linux/video6(/.*)?     u:object_r:sysfs_graphics:s0
+/sys/devices/virtual/input/input4(/.*)?                       u:object_r:sysfs:s0
+/sys/devices/virtual/wakeup(/.*)?                       u:object_r:sysfs:s0
+/sys/devices/platform/soc/c1b7000.i2c/i2c-7/7-0048/wakeup(/.*)?                       u:object_r:sysfs:s0
+/sys/devices/platform/soc/c1b7000.i2c/i2c-7/7-0047/wakeup(/.*)?                       u:object_r:sysfs:s0

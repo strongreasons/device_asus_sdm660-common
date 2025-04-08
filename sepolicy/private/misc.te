@@ -1,0 +1,6 @@
+allow kcmdlinectrl sysfs_dt_firmware_android:file { read };
+allow kcmdlinectrl sysfs_dt_firmware_android:file { open };
+allow kcmdlinectrl sysfs_dt_firmware_android:file { getattr };
+allow misctrl sysfs_dt_firmware_android:file { read };
+allow misctrl sysfs_dt_firmware_android:file { open };
+allow misctrl sysfs_dt_firmware_android:file { getattr };
