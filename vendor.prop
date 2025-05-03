@@ -1,6 +1,5 @@
 # Audio
 af.fast_track_multiplier=1
-af.resampler.quality=7
 audio.deep_buffer.media=true
 audio.offload.min.duration.secs=30
 audio.offload.video=true
@@ -117,19 +116,15 @@ debug.sf.enable_hwc_vds=1
 debug.sf.enable_gl_backpressure=1
 debug.sf.hw=1
 debug.sf.recomputecrop=0
-persist.hwc.mdpcomp.enable=true
 ro.opengles.version=196610
 vendor.display.disable_rotator_downscale=1
-vendor.display.disable_scaler=0
 
 # DRM
 drm.service.enabled=true
 
-# Fling Velocity
-ro.min.fling_velocity=160
-ro.max.fling_velocity=20000
-persist.service.lgospd.enable=0
-persist.service.pcsync.enable=0
+# EGL - Blobcache configuration
+ro.egl.blobcache.multifile=true
+ro.egl.blobcache.multifile_limit=33554432
 
 # FM
 vendor.hw.fm.init=0
@@ -149,12 +144,10 @@ debug.sf.early_app_phase_offset_ns=1500000
 debug.sf.early_gl_phase_offset_ns=3000000
 debug.sf.early_gl_app_phase_offset_ns=15000000
 
-# NTP Server
-persist.backup.ntpServer=0.pool.ntp.org
-
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.vendor.perf.scroll_opt=true
+ro.vendor.perf.scroll_opt.heavy_app=true
 
 # Radio
 persist.radio.multisim.config=dsds
