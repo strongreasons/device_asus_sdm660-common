@@ -2,6 +2,13 @@
 # system.prop for sdm660
 #
 
+# About Phone Defintions
+ro.product.marketname=Asus Zenfone Max Pro M1
+ro.infinity.soc=Snapdragon 660
+ro.infinity.battery=5000 mAh
+ro.infinity.display=1080 x 2160, 60 Hz
+ro.infinity.camera=16MP + 5MP + 16MP
+
 # Audio
 audio.sys.noisy.broadcast.delay=600
 audio.sys.offload.pstimeout.secs=3
