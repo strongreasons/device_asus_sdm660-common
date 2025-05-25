@@ -9,6 +9,9 @@ $(call inherit-product, vendor/asus/sdm660-common/sdm660-common-vendor.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 
+# Add common definitions for Qualcomm
+$(call inherit-product, hardware/qcom-caf/common/common.mk)
+
 # UFFD GC
 OVERRIDE_ENABLE_UFFD_GC := false
 
@@ -150,6 +153,10 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.memtrack-service \
     vendor.display.config@1.0.vendor \
     vendor.display.config@2.0
+
+PRODUCT_PACKAGES += \
+    libGLESv2_adreno_libGLESv2_adreno_symlink32 \
+    libGLESv2_adreno_libGLESv2_adreno_symlink64
 
 # Display Device Config
 PRODUCT_COPY_FILES += \
@@ -507,6 +514,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
+PRODUCT_PACKAGES += \
+    libimscamera_jni_libimscamera_jni_symlink64 \
+    libimsmedia_jni_libimsmedia_jni_symlink64
+
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal-service.qti
@@ -555,6 +566,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(COMMON_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
-# WiFi Display
+# Wifi firmware symlinks
 PRODUCT_PACKAGES += \
-    android.media.audio.common.types-V2-cpp
+    firmware_WCNSS_qcom_cfg.ini_symlink
