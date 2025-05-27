@@ -31,10 +31,6 @@
 # be added to search path for firmware loading
 firmware_directories /vendor/firmware_mnt/image/
 
-subsystem dma_heap
-    devname uevent_devpath
-    dirname /dev/dma_heap
-
 subsystem mem_buf_vm
     devname uevent_devpath
     dirname /dev/mem_buf_vm
@@ -174,10 +170,6 @@ subsystem mem_buf_vm
 /dev/byte-cntr            0660   system    oem_2902
 /dev/mhi_qdss             0660   system    oem_2902
 /sys/class/qdss_bridge/mhi_qdss  mode      0660     system   oem_2902
-
-#qg
-/dev/qg                   0660  system     system
-/dev/qg_battery           0660  system     system
 
 # wlan
 /dev/wcnss_wlan           0660   system     system
@@ -401,7 +393,6 @@ subsystem mem_buf_vm
 /sys/class/graphics/fb0     modes                    0664    system  graphics
 /sys/class/graphics/fb0     mode                     0664    system  graphics
 /sys/class/graphics/fb0     msm_cmd_autorefresh_en   0664    system  graphics
-*/
 
 /sys/devices/platform/soc/ae00000.qcom,mdss_mdp power/control 0664 system graphics
 
