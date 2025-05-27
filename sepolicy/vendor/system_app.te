@@ -16,3 +16,5 @@ get_prop(system_app, vendor_bluetooth_prop)
 allow system_app sysfs_leds:dir { search };
 
 dontaudit system_app vendor_default_prop:file { open getattr map };
+
+dontaudit system_app default_android_service:service_manager { find };
