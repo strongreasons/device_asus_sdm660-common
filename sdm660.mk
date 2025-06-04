@@ -118,9 +118,7 @@ PRODUCT_PACKAGES += \
 
 # CNE
 PRODUCT_PACKAGES += \
-    libcnefeatureconfig \
-    cneapiclient \
-    com.quicinc.cne
+    libcnefeatureconfig
 
 # Configstore
 PRODUCT_PACKAGES += \

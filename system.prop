@@ -44,7 +44,7 @@ persist.vendor.overlay.izat.optin=rro
 
 # Graphics
 debug.sdm.support_writeback=0
-debug.sf.latch_unsignaled=0
+debug.sf.latch_unsignaled=1
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 persist.hwc.enable_vds=1
@@ -103,6 +103,3 @@ persist.timed.enable=true
 # WiFi Display
 persist.debug.wfd.enable=1
 persist.sys.wfd.virtual=0
-
-# Zygote preforking
-persist.device_config.runtime_native.usap_pool_enabled=true

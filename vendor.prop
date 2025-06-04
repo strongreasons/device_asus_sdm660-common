@@ -148,6 +148,7 @@ debug.sf.early_gl_app_phase_offset_ns=15000000
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.vendor.perf.scroll_opt=true
 ro.vendor.perf.scroll_opt.heavy_app=true
+vendor.perf.framepacing.enable=1
 
 # Radio
 persist.radio.multisim.config=dsds
