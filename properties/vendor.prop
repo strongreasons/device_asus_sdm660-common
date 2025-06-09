@@ -101,6 +101,10 @@ persist.vendor.camera.HAL3.enabled=1
 persist.vendor.camera.perflock.enable=0
 persist.vendor.camera.dual.isp.sync=0
 
+# Codec2 switch
+debug.stagefright.omx_default_rank.sw-audio=1
+debug.stagefright.omx_default_rank=0
+
 # Display
 debug.sf.enable_hwc_vds=1
 debug.sf.hw=1
@@ -121,10 +125,6 @@ vendor.fm.a2dp.conc.disabled=false
 
 # FRP
 #ro.frp.pst=/dev/block/bootdevice/by-name/frp
-
-# Media
-debug.stagefright.c2inputsurface=-1
-vendor.media.omx=0
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
