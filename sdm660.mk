@@ -12,8 +12,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
-# UFFD GC
-OVERRIDE_ENABLE_UFFD_GC := false
+# Kernel
+PRODUCT_ENABLE_UFFD_GC := true
 
 # Default is nosdcard, S/W button enabled in resource
 PRODUCT_CHARACTERISTICS := nosdcard
