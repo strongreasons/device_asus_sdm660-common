@@ -158,10 +158,6 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.0.vendor \
     vendor.display.config@2.0
 
-PRODUCT_PACKAGES += \
-    libGLESv2_adreno_libGLESv2_adreno_symlink32 \
-    libGLESv2_adreno_libGLESv2_adreno_symlink64
-
 # Display Device Config
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/displayconfig/display_id_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_0.xml
@@ -335,6 +331,12 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(COMMON_PATH)/overlay-lineage
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
+
+# Partitions
+PRODUCT_PACKAGES += \
+    vendor_dsp_mountpoint \
+    vendor_bt_firmware_mountpoint \
+    vendor_firmware_mnt_mountpoint
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -514,10 +516,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
-
-PRODUCT_PACKAGES += \
-    libimscamera_jni_libimscamera_jni_symlink64 \
-    libimsmedia_jni_libimsmedia_jni_symlink64
 
 # Thermal
 PRODUCT_PACKAGES += \
