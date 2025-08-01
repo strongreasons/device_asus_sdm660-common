@@ -500,6 +500,7 @@ QCOM_SOONG_NAMESPACE := \
 
 # Telephony
 PRODUCT_PACKAGES += \
+    libshim_imscamera \
     extphonelib \
     extphonelib-product \
     extphonelib.xml \
