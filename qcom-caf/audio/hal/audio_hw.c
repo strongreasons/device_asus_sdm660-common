@@ -8002,8 +8002,7 @@ int adev_open_output_stream(struct audio_hw_device *dev,
         if (!voice_extn_is_compress_voip_supported()) {
             if (out->sample_rate == 8000 || out->sample_rate == 16000 ||
              out->sample_rate == 32000 || out->sample_rate == 48000) {
-                out->channel_mask = audio_extn_utils_is_vendor_enhanced_fwk() ?
-                                        config->channel_mask : AUDIO_CHANNEL_OUT_STEREO;
+                out->channel_mask = config->channel_mask;
                 out->usecase = USECASE_AUDIO_PLAYBACK_VOIP;
                 out->format = AUDIO_FORMAT_PCM_16_BIT;
                 out->volume_l = INVALID_OUT_VOLUME;
