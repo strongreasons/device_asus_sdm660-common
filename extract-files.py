@@ -14,6 +14,7 @@ from extract_utils.fixups_lib import (
     lib_fixups_user_type,
 )
 from extract_utils.main import (
+    ExtractUtils,
     ExtractUtilsModule,
 )
 
@@ -125,3 +126,7 @@ module = ExtractUtilsModule(
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
 )
+
+if __name__ == '__main__':
+    utils = ExtractUtils.device(module)
+    utils.run()
