@@ -56,7 +56,7 @@ vendor/lib64/libcdsp_default_listener.so|fdd9893e7e95a98ec953ac32d3a2a5918b28ef8
 vendor/lib64/libcdsprpc.so|4688f68c303a4def9c01549621f223283fc8ca12
 
 # ANT - from Zebra/helios/helios:14/14-23-05.00-UG-U05-STD-HEL-04/5:user/release-keys
-vendor/lib64/hw/com.dsi.ant@1.0-impl.so
+vendor/lib64/hw/com.dsi.ant@1.0-impl.so|d81c62439958c309c34bc96bf63232fa3a6481b5
 
 # Audio - from Zebra/helios/helios:14/14-23-05.00-UG-U05-STD-HEL-04/5:user/release-keys
 vendor/lib/libacdb-fts.so|10a9d929616df9ec0e545563a2ca08c9bd814d5f
@@ -863,7 +863,7 @@ system_ext/lib64/vendor.qti.imsrtpservice@3.1.so|c1f385482e4808793d86f41419494e8
 system_ext/lib64/vendor.qti.ImsRtpService-V1-ndk.so|b2071cdbcf4fbf564d3247301c26c436c5d4bb80
 
 # Powerhal - from Zebra/helios/helios:14/14-23-05.00-UG-U05-STD-HEL-04/5:user/release-keys
-vendor/etc/powerhint.xml
+vendor/etc/powerhint.xml|60c31f6b5b47fd91daba44c3063ce0ba9764ccc2
 
 # Radio (IMS) - from Google Barbet
 system_ext/priv-app/ims/ims.apk|28a98e643e2fc9f1e5931078f9f5b77fc908122b
