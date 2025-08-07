@@ -167,6 +167,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.hwui.use_buffer_age=true
 
 # Dolby
+PRODUCT_PACKAGES += \
+    ASUSDolby
+
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio/dax-default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby/dax-default.xml
 
